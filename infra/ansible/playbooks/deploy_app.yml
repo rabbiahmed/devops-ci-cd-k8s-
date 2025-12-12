@@ -1,4 +1,0 @@
-- hosts: localhost
-  tasks:
-    - name: Apply k8s manifests
-      command: kubectl apply -f k8s/

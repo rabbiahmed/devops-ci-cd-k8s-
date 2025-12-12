@@ -1,0 +1,13 @@
+---
+- name: Ensure Docker is installed
+  ansible.builtin.shell: |
+    curl -fsSL https://get.docker.com | sh
+  args:
+    creates: /usr/bin/docker
+
+- name: Install Docker Python SDK
+  pip:
+    name:
+      - docker
+      - docker-compose
+    state: present

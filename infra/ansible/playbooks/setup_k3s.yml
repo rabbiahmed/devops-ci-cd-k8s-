@@ -1,7 +1,0 @@
-- hosts: localhost
-  become: yes
-  tasks:
-    - name: Install k3d (if not present)
-      command: curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
-      args:
-      creates: /usr/local/bin/k3d

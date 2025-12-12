@@ -1,0 +1,6 @@
+---
+- name: Apply Kubernetes manifests
+  ansible.builtin.command:
+    cmd: kubectl apply -f k8s/
+  args:
+    chdir: "{{ playbook_dir }}"

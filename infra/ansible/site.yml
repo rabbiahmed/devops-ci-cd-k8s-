@@ -1,0 +1,21 @@
+---
+- hosts: localhost
+  become: yes
+  gather_facts: yes
+  tasks:
+
+    - name: Run Docker role
+      import_role:
+        name: docker
+
+    - name: Run k3s role
+      import_role:
+        name: k3s
+
+    - name: Run Jenkins role
+      import_role:
+        name: jenkins
+
+    - name: Deploy app
+      import_role:
+        name: app

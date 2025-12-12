@@ -1,0 +1,12 @@
+---
+- name: Ensure k3d CLI is installed
+  ansible.builtin.shell: |
+    curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
+  args:
+    creates: /usr/local/bin/k3d
+
+- name: Ensure k3d cluster exists
+  ansible.builtin.shell: |
+    k3d cluster list | grep dev-cluster || k3d cluster create dev-cluster
+  args:
+    executable: /bin/bash

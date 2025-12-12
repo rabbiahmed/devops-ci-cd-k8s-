@@ -1,0 +1,17 @@
+---
+- name: Check if Jenkins container exists
+  community.docker.docker_container_info:
+    name: jenkins
+  register: jenkins_info
+  ignore_errors: yes
+
+- name: Run Jenkins container if not present
+  community.docker.docker_container:
+    name: jenkins
+    image: jenkins/jenkins:lts
+    state: started
+    restart_policy: always
+    published_ports:
+      - "8080:8080"
+  when: (jenkins_info.containers | default([]) | length) == 0
+  ignore_errors: yes

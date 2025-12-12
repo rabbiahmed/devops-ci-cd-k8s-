@@ -9,10 +9,48 @@ This project demonstrates a full CI/CD pipeline:
 - CD: Jenkins (deploy to k8s)
 - Provisioning: Ansible (Jenkins, k3s)
 
-## Quickstart (local)
-1. Start k3d cluster: `k3d cluster create dev-cluster`
-2. Build image locally: `make docker-build`
-3. Deploy: `kubectl apply -f k8s/`
+## Prerequisites
 
+- Ubuntu 22.04
+- Git
+- Python 3.10+ and pip
+- Ansible 2.17+ (or installed via pip)
+- Docker
+
+## Setup Instructions
+
+### 1. Clone the repository
+
+```bash
+git clone <repo-url>
+cd devops-ci-cd-k8s
+```
+
+### 2. Run the full DevOps environment
+
+```bash
+make ansible
+```
+
+### 3. Docker Tasks
+
+```bash
+make docker-build     # Build app Docker image
+make docker-run       # Run app container locally
+make docker-push      # Push image to your registry
+```
+
+### 4. Kubernetes Tasks
+
+```bash
+make k8s-apply        # Apply manifests
+make k8s-delete       # Delete manifests
+```
+
+### 5. Clean Environment
+
+```bash
+make clean
+```
 
 See `/docs/architecture.md` for details.
